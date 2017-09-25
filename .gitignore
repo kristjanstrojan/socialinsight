@@ -1,0 +1,6 @@
+errors
+sessions
+databases
+./*.pyc
+/**/*.pyc
+/**/**/*.pyc

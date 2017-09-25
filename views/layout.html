@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<!--[if (gt IE 9)|!(IE)]><!--> <html class="no-js" lang="{{=T.accepted_language or 'en'}}"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge{{=not request.is_local and ',chrome=1' or ''}}">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{{=response.title or request.application}}</title>
+        <meta name="application-name" content="{{=request.application}}">
+        <meta name="google-site-verification" content="">
+        <link rel="manifest" href="{{=URL('static','manifest.webmanifest')}}">
+
+        <!-- include stylesheets -->
+        <link rel="stylesheet" href="{{=URL('static','semantic/semantic.min.css')}}"/>
+        <link rel="stylesheet" href="{{=URL('static','css/style.css')}}"/>
+        <link rel="shortcut icon" href="{{=URL('static','images/favicon.ico')}}" type="image/x-icon">
+        <link rel="apple-touch-icon" href="{{=URL('static','images/favicon.png')}}">
+
+        <script src="{{=URL('static','js/modernizr-2.8.3.min.js')}}"></script>
+        <script src="{{=URL('static','js/jquery.js')}}"></script>
+
+        {{block head}}{{end}}
+    </head>
+    <body>
+        <!-- Navbar ======================================= -->
+
+        <div class="ui top fixed menu">
+            <div class="item">
+                <strong>SOCIAL INSIGHT TOOL</strong>
+            </div>
+        </div>
+
+        <div class="ui container grid" id="top-outer">
+            <div class="sixteen wide column centered" id="top"></div>
+        </div>
+
+        {{block center}}
+        <div  id="main">
+            <div class="ui inverted dimmer">
+                <div class="ui text loader">Loading</div>
+            </div>
+            {{include}}
+        </div>
+        {{end}}
+
+        {{block footer}} <!-- this is default footer -->
+        {{end}}
+
+
+
+        <!-- The javascript =============================== -->
+        <script
+            src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
+            integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
+            crossorigin="anonymous"></script>
+
+        <script src="{{=URL('static','semantic/semantic.min.js')}}"></script>
+        <script src="{{=URL('static','js/app.js')}}"></script>
+        <script>
+         $(document).ready(function() {
+             $('.ui.dropdown').dropdown();
+         });
+
+        </script>
+        {{block js}}{{end js}}
+    </body>
+</html>

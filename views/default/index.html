@@ -1,0 +1,84 @@
+{{extend 'layout.html'}}
+<style>body{padding-top:0;}</style>
+<div class="ui vertical blue inverted segment">
+<div class="row">
+    <h2 class="upper">Intelligentor</h2>
+    <p>
+        The tool for checking competitors news publishing.
+    </p>
+</div>
+<div class="row">
+    <div style="text-align:right; padding-bottom:5px;">
+        <div class="ui buttons" role="group">
+
+            <!-- <Ukazi> -->
+            <div class="ui floating labeled icon intelli-dropdown dropdown tiny button">
+                <i class="filter icon"></i>
+                <span class="text">Commands</span>
+                <div class="menu">
+                    <div class="header">
+                        Commands List
+                    </div>
+                    <div class="divider"></div>
+                    <div class="item intelSearchInsert" href="javascript:;" onclick="intelSearchInsert(this)" data-insert="/social">/social</div>
+                    <div class="item intelSearchInsert" href="javascript:;" onclick="intelSearchInsert(this)" data-insert="/rss">/rss</div>
+                </div>
+            </div>
+
+            <!-- Shranjene poizvedbe -->
+            <div class="ui floating labeled icon poizvedbe dropdown tiny button">
+                <i class="filter icon"></i>
+                <span class="text">Saved queries</span>
+                <div class="menu" id="intelSavedSearches">
+                </div>
+            </div>
+            <button class="ui tiny button" onclick="saveSearchIntel()">Save query</button>
+        </div>
+    </div>
+</div>
+
+
+<form onsubmit="searchIntel(this, event)" class="ui fixed bottom">
+    <div class="ui fluid action input">
+        <input id="intelSearch" name="search" type="text" class="" placeholder="Vnesi poizvedbo">
+        <button type="submit" class="ui button"><i class="inverted circular search icon"></i> Dobi vpogled</button>
+    </div>
+</form>
+</div>
+
+<div id="result"></div>
+
+
+<!-- Add Search popup -->
+<div class="ui modal" id="intelSearchModal"  role="dialog">
+    <div class="header">Save query</div>
+    <div class="content">
+        <form class="ui form" id="intelSearchSavePost" onsubmit="intelSearchSavePost(event);">
+            <div class="field">
+                <label>Ime poizvedbe</label>
+                <input class="form-control" id="intel_name">
+            </div>
+            <div class="field">
+                <label>Opis poizvedbe</label>
+                <textarea class="form-control" id="intel_description"></textarea>
+            </div>
+            <div class="field">
+                <label>Poizvedba</label>
+                <input class="form-control" id="intel_search">
+            </div>
+            <div class="actions">
+                <button type="submit" class="ui approve button">Save changes</button>
+                <div class="ui cancel button">Cancel</div>
+            </div>
+        </form>
+
+    </div>
+</div><!-- /.modal -->
+
+<script>
+ $(document).ready(function() {
+     loadSavedSearches();
+     $('.intelli-dropdown').dropdown();
+     $('.poizvedbe').dropdown();
+ });
+</script>

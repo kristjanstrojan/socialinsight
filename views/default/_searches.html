@@ -1,0 +1,15 @@
+<div class="header">
+    Izberi poizvedbo
+</div>
+<div class="divider"></div>
+{{for r in result:}}
+<div class="item">
+    <a class="intelSearchInsert data-box" href="javascript:;" onclick="intelSearchInsert(this)" data-insert="{{=r.isearch}}">
+        <div class="data-title">{{=r.name}}</div>
+        <div class="data-desc">{{=r.description[0:150]}}</div>
+        <div class="data-raw">
+            {{=r.isearch[0:60]}}
+        </div>
+    </a>
+</div>
+{{pass}}

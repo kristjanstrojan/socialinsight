@@ -1,0 +1,12 @@
+<div class="head">REZULTATI</div>
+<ul class="list-group">
+{{for r in result:}}
+
+    <li class="list-group-item">
+        <h4><a href="{{=r['url']}}" target="_blank">{{=r['text']}}</a></h4>
+        <small>#{{=r['channel']}} - {{=r['date']}}</small>
+    </li>
+{{pass}}
+</ul>
+
+
